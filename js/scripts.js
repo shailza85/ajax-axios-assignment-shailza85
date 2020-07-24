@@ -5,7 +5,7 @@
     // console.log(response);
      
      const cbreed1= response.data.message; // Object contatining id and name properties.
-     console.log(cbreed1);
+    // console.log(cbreed1);
     /**
      * <DL>
      *  <DT>Title of item(s)</DT>
@@ -40,6 +40,7 @@
 
  });
 
+ //Another API for testing purpose...
  axios.get("https://api.abalin.net/today?country=us&timezone=America%2FLos_Angeles") //type of request id GET
 //Handle reponse...
  .then(response=> {
