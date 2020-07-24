@@ -1,35 +1,46 @@
-/*fetch("https://api.thecatapi.com/v1/images/search?breed_id=beng") //Sends the request to fetch data
-.then(response=> { 
-    if (response.status>=200 && response.status<=299) {  // checks the range of response codes 
-        return response.json(); // converts response to JSON and sends to .then
-    }
-    else {
-        throw Error(response.statusText); //displays error if response is unsuccessfull.
-    }
-})
-// checking the response data and output to console.
-.then (data=> { 
-    console.log(data);
+ axios.get("https://dog.ceo/api/breeds/list/all") //type of request id GET
+//Handle reponse...
+ .then(response=> {
+     //Test if we are getting data
+    // console.log(response);
+     
+     const cbreed1= response.data.message; // Object contatining id and name properties.
+     console.log(cbreed1);
+    /**
+     * <DL>
+     *  <DT>Title of item(s)</DT>
+     *  <DD>Item Contents</DD>
+     * <DT>Title of item(s)</DT>
+     *  <DD>Item Contents</DD>
+     * <DD>Item Contents</DD>
+     * </DL>
+     */
+    const cHeading = document.createElement("h2");
+    cHeading.textContent ="Dog Breed List";
+    const cbreed1DL = document.createElement( "DL" );
+    const cbreed1DT = document.createElement( "DT" );
+    cbreed1DT.textContent = "Breed";
+    const cBreed1DD = document.createElement( "DD" );
+    cBreed1DD.textContent = `1. Australian:  ${cbreed1.australian}`; // Get the value from our id property (see response.)
+    //const cNameDT = document.createElement( "DT" );
+    const cNameD = document.createElement( "DD" );
+    cNameD.textContent = `2. Bulldog:  ${cbreed1.bulldog}`; // Get the value from our name property (see response.)
 
+    const cNameDD = document.createElement( "DD" );
+    cNameDD.textContent = `3. Hound:  ${cbreed1.hound}`; // Get the value from our name property (see response.)
 
-const catsBreed=data.catsBreed; //This is an arrays of cats breed
-const catsBreedUL =document.createElement("UL"); //creating UL List
+     //Append all the things to <DL>
+     cbreed1DL.appendChild( cbreed1DT );
+     cbreed1DL.appendChild( cBreed1DD );
+     cbreed1DL.appendChild( cNameD );
+     cbreed1DL.appendChild( cNameDD );
+    // Put this into the page (<body>)!
+    document.body.appendChild( cHeading );
+    document.body.appendChild( cbreed1DL );
 
-for (const cbreed of catsBreed) //looping through array
-{
-    const catsBreedLI =document.createElement("LI"); ///creating li 
-    //Adding text content using template literal 
-    catsBreedLI.textContent=`cat name: ${cbreed.name}. URL: ${cbreed.cfa_url}.`;
-    // Append li to ul
-    catsBreedUL.appendChild(catsBreedLI);
-    
-}
-//Add ul to the body of webpage
-document.body.appendChild(catsBreedUL);
-});
-*/
+ });
 
-axios.get("https://api.abalin.net/today?country=us&timezone=America%2FLos_Angeles") //type of request id GET
+ axios.get("https://api.abalin.net/today?country=us&timezone=America%2FLos_Angeles") //type of request id GET
 //Handle reponse...
  .then(response=> {
      //Test if we are getting data
@@ -47,7 +58,7 @@ axios.get("https://api.abalin.net/today?country=us&timezone=America%2FLos_Angele
      * </DL>
      */
     const namedAPI= document.createElement("h2");
-    namedAPI.textContent="International Nameday API:";
+    namedAPI.textContent="International Name day API:";
     const nDateDL = document.createElement( "DL" );
     const nDateDT = document.createElement( "DT" );
     nDateDT.textContent = "Date Today:";
@@ -67,47 +78,6 @@ axios.get("https://api.abalin.net/today?country=us&timezone=America%2FLos_Angele
     // Put this into the page (<body>)!
     document.body.appendChild( namedAPI );
     document.body.appendChild( nDateDL );
-
- });
-
-
- axios.get("https://dog.ceo/api/breeds/list/all") //type of request id GET
-//Handle reponse...
- .then(response=> {
-     //Test if we are getting data
-    // console.log(response);
-     
-     const cbreed1= response.data.message; // Object contatining id and name properties.
-     //console.log(cbreed1);
-    /**
-     * <DL>
-     *  <DT>Title of item(s)</DT>
-     *  <DD>Item Contents</DD>
-     * <DT>Title of item(s)</DT>
-     *  <DD>Item Contents</DD>
-     * <DD>Item Contents</DD>
-     * </DL>
-     */
-    const cHeading = document.createElement("h2");
-    cHeading.textContent ="Dog Breeds List";
-    const cbreed1DL = document.createElement( "DL" );
-    const cbreed1DT = document.createElement( "DT" );
-    cbreed1DT.textContent = "Breed";
-    const cBreed1DD = document.createElement( "DD" );
-    cBreed1DD.textContent = cbreed1.australian; // Get the value from our id property (see response.)
-    const cNameDT = document.createElement( "DT" );
-    cNameDT.textContent = "Sub:Breed";
-    const cNameDD = document.createElement( "DD" );
-    cNameDD.textContent = cbreed1.bulldog; // Get the value from our name property (see response.)
-
-     //Append all the things to <DL>
-     cbreed1DL.appendChild( cbreed1DT );
-     cbreed1DL.appendChild( cBreed1DD );
-     cbreed1DL.appendChild( cNameDT );
-     cbreed1DL.appendChild( cNameDD );
-    // Put this into the page (<body>)!
-    document.body.appendChild( cHeading );
-    document.body.appendChild( cbreed1DL );
 
  });
 
