@@ -1,0 +1,16 @@
+body{
+    background-color: bisque;
+
+}
+h2 {
+    color: brown;
+}
+dt {
+    color: darkblue;
+    font-size: 20px;
+    font-weight: bold;
+}
+dd {
+    color: darkgreen;
+    font-weight: bold;
+}
